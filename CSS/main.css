@@ -1,0 +1,143 @@
+/*************************Main document CSS******************************/
+body
+{
+	background-image: url('noisy_net.png');
+	font-family: 'Open Sans', sans-serif;
+	color: #eaeded;
+	padding: 5em 7em;	
+}
+
+body, html
+{
+	/*height: 100%;*/
+}
+
+.inline-item
+{
+	display: inline-block;
+}
+/*************************************************************************/
+
+/***************************Title & Seperaters****************************/
+#title
+{
+	font-size:5em;
+	padding: 0px;
+	margin: 0 0 0 5.5em;
+	opacity: 0;
+}
+
+#title-sub
+{
+	font-size:2.2em;
+	margin-left:2.5em;
+}
+
+#vertical-sep
+{
+	border-right: solid white;
+	padding: 0px;
+	margin: 0px;
+	margin-top: -7em;
+	position: absolute;
+	height: 45em;
+	width: 14em;
+}
+
+#horizontal-sep
+{
+	font-size:3em;
+	padding: 0px;
+	margin: 0px;
+	margin-left:-0.5em;
+	position: absolute;
+	width: 80%;
+	border-top: solid white;
+}
+/*************************************************************************/
+
+/*****************************Side Menu***********************************/
+#menu
+{
+	width:10em;
+	text-align: right;
+	font-size:1.4em;
+	margin-top:11%;
+}
+	#about, #team, #prototype
+	{
+		margin-top:2em;
+	}
+	#about
+	{
+		width: 2.8em;
+		margin-left: 5.2em;
+	}
+	#team
+	{
+		width: 2.6em;
+		margin-left: 5.4em;
+	}
+	#prototype
+	{
+		width: 4.5em;
+		margin-left: 3.5em;
+	}
+/*************************************************************************/
+
+/*****************************Main Content********************************/
+#main
+{
+	display: -webkit-inline-box;
+	width: 100%;
+}
+	#content
+	{
+		width:70%;
+		padding: 1em;
+		height:35em;
+	}
+		#about-tab, #team-tab, #prototype-tab
+		{
+
+		}
+			#about-tab
+			{				
+				text-align: right;
+			}
+				#about-tab img
+				{
+					float:left;
+				}
+			#prototype-tab
+			{
+				text-align: justify;
+			}
+				#prototype-tab iframe
+				{
+					margin-top:1em;
+					margin-right: auto;
+					margin-bottom: 1em;
+					margin-left: auto;
+					display:block;
+				}
+					#white-cane
+					{
+						margin: 4em 0 0 0;
+					}
+					#guide-dog
+					{
+						margin: 4em 0 1em 0;
+					}
+
+	#slider
+	{
+		width:2em;
+		margin-top:11%;
+	}
+		#arrow
+		{
+			position: relative;
+			opacity: 0;
+		}
+/*************************************************************************/

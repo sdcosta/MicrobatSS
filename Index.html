@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Microbat Sonar Systems</title>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="jquery-2.0.3.js"></script>
+		<script type="text/javascript" src="common_functions.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="CSS/main.css" media="screen" />
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+		<script type="text/javascript">
+			function loadMenu (menuItem, menu, menuClicked){				
+				var unclickedMenuItems;
+
+				//Get selected menu tab and fadeOut the non-selected menu tabs
+				switch (menuItem.id)
+				{
+					case 'about':
+						menu = $('#team').add('#prototype');
+						$('#team-tab').add('#prototype-tab').fadeOut(250);
+						break;
+					case 'team':
+						menu = $('#about').add('#prototype');
+						$('#about-tab').add('#prototype-tab').fadeOut(250);
+						break;
+					case 'prototype':
+						menu = $('#about').add('#team');
+						$('#about-tab').add('#team-tab').fadeOut(250);
+						break;
+					default:
+						menu = $('#about').add('#team').add('#prototype');
+				}
+
+				var yPos = $(menuItem).position().top;
+				var yPosArrow = $('#arrow').position().top;
+				$('#arrow').stop(true,false).animate({'top': '+=' + (yPos - yPosArrow + 48)}, 300,
+					function(){
+						callMenuTab(menuItem.id);
+						$('#'+menuItem.id+'-tab').fadeIn(250);
+					});
+
+				//Un-highlight the non-selected menu item
+				menu.fadeTo(200, 0.2);
+
+				//Highlight the menu item clicked
+				$(menuItem).css({opacity:1});
+				$('#arrow').css({opacity:1});
+
+				//Menu item has been clicked
+				menuClicked = true;
+				$('#slider img').attr('src', 'CSS/arrow-36-24.png');
+			}
+
+			function callMenuTab(menuItemId){
+				$.ajax({
+			        type:  'post',
+			        cache:  false ,
+			        url:  'Controller.php',
+			        data:  {action: menuItemId},
+			        success: function(response) {
+			        	$('#'+menuItemId+'-tab').html(response);
+			        } 
+
+			      });
+			}
+
+			// function transparentView (menuItemId) {
+			// 	$.ajax({
+			//         type:  'post',
+			//         cache:  false ,
+			//         url:  'Controller.php',
+			//         data:  {actionTransparentLoad: 'test'},
+			//         success: function(response) {
+			//         	$('#'+menuItemId+'-tab').html(response);
+			//         	$('#'+menuItemId+'-tab').fadeIn(250);
+			//         }
+
+			//       });
+			// }
+			$(document).ready(function(){
+				var titleDelay = 1000;
+				var menuDelay = 200;
+				var seperator = $('#horizontal-sep').add('#vertical-sep');
+				var menu = $('#about').add('#team').add('#prototype');
+				var lastMenuClicked = $('#about');
+				var menuClicked = false;
+				var initComplete = false;
+
+				//Initialize
+				$('.appear-later').hide();
+				$('#horizontal-sep').fadeIn(titleDelay-500, 
+					function() {
+						$('#vertical-sep').fadeIn(titleDelay- 500,
+							function(){						
+								$('#title').animate({opacity:1}, titleDelay,
+									function(){
+										$('#about').fadeIn(menuDelay,
+											function(){
+												$('#team').fadeIn(menuDelay,
+													function(){
+														$('#prototype').fadeIn(menuDelay,
+															function(){
+																menu.add(seperator).fadeTo(1000, 0.25);
+																menu.remove(seperator);
+																initComplete = true;
+																});															
+													});//Team
+											});//About
+									});//Title
+						});//Vertical Seperator
+				});//Horizontal Seperator
+
+				$('#about').click(
+					function(){
+						menuClicked = true;
+						lastMenuClicked = this;
+						loadMenu(this, menu, menuClicked);
+					})
+
+				$('#team').click(
+					function(){
+						menuClicked = true;
+						lastMenuClicked = this;
+						loadMenu(this, menu, menuClicked);
+					})
+
+				$('#prototype').click(
+					function(){
+						menuClicked = true;
+						lastMenuClicked = this;
+						loadMenu(this, menu, menuClicked);
+					})
+				//Menu hover effect
+				menu.hover(
+					function() {
+						if (initComplete)
+						{
+							var yPos = $(this).position().top;
+							var yPosArrow = $('#arrow').position().top;
+							$(this).stop(true,false).fadeTo(200, 0.8);
+							if (!menuClicked)
+							{
+								$('#arrow').stop(true,false).animate({'top': '+=' + (yPos - yPosArrow + 48)}, 300);
+								$('#arrow').fadeTo(200, 0.8);
+							}
+						}
+						// transparentView (this.id);
+
+				}, function() {
+					if (initComplete){
+						if (lastMenuClicked.id != this.id)
+							$(this).stop(true,false).fadeTo(200,0.2);
+						
+						if (!menuClicked)
+							$('#arrow').stop(true,false).fadeTo(200, 0);
+					}
+				});
+
+			});//Document Ready
+		</script>
+	</head>
+
+	<body>
+		<div id="title" >Microbat</div>
+		<div id="title-sub" class="appear-later">Sonar Systems</div>
+
+		<div id="horizontal-sep" class="appear-later"></div>
+		<div id="vertical-sep" class="appear-later"></div>
+		<div id="main">
+			<div id="menu">
+				<div id="about" class="appear-later">
+					About
+				</div>
+				<div id="team" class="appear-later">
+					Team
+				</div>
+				<div id="prototype" class="appear-later">
+					Prototype
+				</div>
+			</div>
+
+			<div id="slider">
+				<div id="arrow"><img src="CSS/arrow-28-32.png"/></div>
+			</div>
+
+			<div id="content">
+				<div id="about-tab" class="appear-later">
+				</div>
+				<div id="team-tab" class="appear-later"></div>
+				<div id="prototype-tab" class="appear-later">
+					<iframe width="560" height="315" src="//www.youtube.com/embed/Sdn_nIEUx5I?rel=0" frameborder="0" allowfullscreen>	
+					</iframe>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
