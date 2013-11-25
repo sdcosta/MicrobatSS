@@ -9,6 +9,27 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 
 		<script type="text/javascript">
+			function teamAnimation(){
+				var delay = 300;
+				var team = $("#sho").add("#suk").add("#amin").add("#faiz").add("#tom").add("#char");
+				$("#sho").fadeIn(delay,	function(){
+						$("#suk").fadeIn(delay, function(){
+							$("#amin").fadeIn(delay, function(){
+								$("#faiz").fadeIn(delay, function(){
+									$("#tom").fadeIn(delay, function(){
+										$("#char").fadeIn(delay, function(){
+											team.animate({
+												opacity: 0.2},
+												1000, function() {
+												/* stuff to do after animation is complete */
+											});
+										});
+									});
+								});
+							});
+						});
+				});
+			}
 			function loadMenu (menuItem, menu, menuClicked){				
 				var unclickedMenuItems;
 
@@ -36,7 +57,13 @@
 				$('#arrow').stop(true,false).animate({'top': '+=' + (yPos - yPosArrow + 48)}, 300,
 					function(){
 						callMenuTab(menuItem.id);
-						$('#'+menuItem.id+'-tab').fadeIn(250);
+						$('#'+menuItem.id+'-tab').fadeIn(250, 
+							function(){
+								// if (menuItem.id === 'team')
+			     //    			{
+			     //    				teamAnimation();
+			     //    			}
+							});
 					});
 
 				//Un-highlight the non-selected menu item
@@ -58,7 +85,7 @@
 			        url:  'Controller.php',
 			        data:  {action: menuItemId},
 			        success: function(response) {
-			        	$('#'+menuItemId+'-tab').html(response);
+			        	$('#'+menuItemId+'-tab').html(response);			        	
 			        } 
 
 			      });
@@ -85,7 +112,7 @@
 				var lastMenuClicked = $('#about');
 				var menuClicked = false;
 				var initComplete = false;
-
+				
 				//Initialize
 				$('.appear-later').hide();
 				$('#horizontal-sep').fadeIn(titleDelay-500, 
@@ -109,7 +136,6 @@
 									});//Title
 						});//Vertical Seperator
 				});//Horizontal Seperator
-
 				$('#about').click(
 					function(){
 						menuClicked = true;
@@ -155,7 +181,6 @@
 							$('#arrow').stop(true,false).fadeTo(200, 0);
 					}
 				});
-
 			});//Document Ready
 		</script>
 	</head>
@@ -186,7 +211,9 @@
 			<div id="content">
 				<div id="about-tab" class="appear-later">
 				</div>
-				<div id="team-tab" class="appear-later"></div>
+				<div id="team-tab" class="appear-later">
+					
+				</div>
 				<div id="prototype-tab" class="appear-later">
 					<iframe width="560" height="315" src="//www.youtube.com/embed/Sdn_nIEUx5I?rel=0" frameborder="0" allowfullscreen>	
 					</iframe>

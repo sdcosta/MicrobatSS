@@ -1,3 +1,62 @@
-<p>
-	Our Team is awesome. Except for that one guy...
-</p>
+<script type="text/javascript">
+	//Sub-menu hover effects
+	var subMenu = $("#sho").add("#suk").add("#amin").add("#faiz").add("#tom").add("#char");
+	var subMenuCompleted = false;
+
+	var delay = 200;
+	$("#sho").fadeIn(delay,	function(){
+			$("#suk").fadeIn(delay, function(){
+				$("#amin").fadeIn(delay, function(){
+					$("#faiz").fadeIn(delay, function(){
+						$("#tom").fadeIn(delay, function(){
+							$("#char").fadeIn(delay, function(){
+								subMenu.animate({
+									opacity: 0.4},
+									500, function() {
+										subMenuCompleted = true
+									/* stuff to do after animation is complete */
+								});
+							});
+						});
+					});
+				});
+			});
+		});
+
+	subMenu.hover(function() {
+		if (subMenuCompleted && $(this).css('opacity') != 1)
+		$(this).stop(true,false).fadeTo(200, 0.8);
+	}, function() {
+		if (subMenuCompleted && $(this).css('opacity') != 1)
+		$(this).stop(true,false).fadeTo(200,0.4);
+	});
+
+	subMenu.click(function(event) {
+		if (subMenuCompleted){
+		subMenu.css({opacity: 0.3});
+		$(this).css({opacity: 1});
+		$.ajax({
+	        type:  'post',
+	        cache:  false ,
+	        url:  'Controller.php',
+	        data:  {action: this.id},
+	        success: function(response) {
+	        	$("#description").html(response);			        	
+	        } 
+
+	      });
+		}
+	});
+</script>
+<h2>Meet the Team</h2>
+<div id="names-sub-menu">
+	<div id="sho">Shouvik D'Costa</div>
+	<div id="suk">Sukhwinder Lall</div>
+	<div id="amin">Amin Ghafelehbashi</div>
+	<div id="faiz">Faizan Haque</div>
+	<div id="tom">Tom Terlecki</div>
+	<div id="char">Charles D'Souza</div>
+</div>
+<div id="description">
+	<img id="team-pic" src="CSS/team.png"/>
+</div>

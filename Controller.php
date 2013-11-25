@@ -11,6 +11,24 @@
 	        case 'prototype':
 	        	readfile('prototype-tab.html');
 	        	break;
+	        case 'sho':
+	        	readfile('description/shouvik.html');
+	        	break;
+	        case 'suk':
+	        	readfile('description/sukhwinder.html');
+	        	break;
+	        case 'amin':
+	        	readfile('description/amin.html');
+	        	break;
+	        case 'faiz':
+	        	readfile('description/faizan.html');
+	        	break;
+	        case 'tom':
+	        	readfile('description/tom.html');
+	        	break;
+	        case 'char':
+	        	readfile('description/charles.html');
+	        	break;
 	        default:
 	        	echo 'Front-end issue';
 	    }

@@ -4,7 +4,8 @@ body
 	background-image: url('noisy_net.png');
 	font-family: 'Open Sans', sans-serif;
 	color: #eaeded;
-	padding: 5em 7em;	
+	padding: 0;	
+	position: relative;
 }
 
 body, html
@@ -15,6 +16,11 @@ body, html
 .inline-item
 {
 	display: inline-block;
+}
+
+.caption
+{
+	font-size:0.8em;
 }
 /*************************************************************************/
 
@@ -36,22 +42,18 @@ body, html
 #vertical-sep
 {
 	border-right: solid white;
-	padding: 0px;
-	margin: 0px;
-	margin-top: -7em;
 	position: absolute;
-	height: 45em;
+	height: 100%;
 	width: 14em;
+	top:0;
+	bottom:0;
 }
 
 #horizontal-sep
 {
 	font-size:3em;
-	padding: 0px;
-	margin: 0px;
-	margin-left:-0.5em;
 	position: absolute;
-	width: 80%;
+	width: 100%;
 	border-top: solid white;
 }
 /*************************************************************************/
@@ -129,7 +131,60 @@ body, html
 					{
 						margin: 4em 0 1em 0;
 					}
+			#team-tab
+			{
 
+			}
+				#names-sub-menu, #description
+				{
+					margin-top:8%;
+				}
+				#names-sub-menu
+				{
+					width: 15em;
+					float:left;
+					margin-right:1em;
+					margin-left: 2em;
+				}
+				#team-tab img
+				{
+					width:55%;
+					height:auto;
+					float:left;
+				}				
+					#names-sub-menu > div
+					{
+						margin-top:1.5em;
+						display: none;
+						font-size:1.1em;
+					}
+						#sho
+						{
+							width:7.8em;
+						}
+						#suk
+						{
+							width:7.6em;
+						}
+						#amin
+						{
+							width:9.5em;
+						}
+						#faiz{
+							width:6.5em;
+						}
+						#tom{
+							width:6.1emem;
+						}
+						#char
+						{
+							width:7.8em;
+						}
+						#full-description
+						{
+							margin-top:18%;
+							text-align: justify;
+						}
 	#slider
 	{
 		width:2em;
