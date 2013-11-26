@@ -4,13 +4,15 @@ body
 	background-image: url('noisy_net.png');
 	font-family: 'Open Sans', sans-serif;
 	color: #eaeded;
-	padding: 0;	
-	position: relative;
+	padding: 0;
+	margin:0;
+	height:40em;
 }
 
-body, html
+html
 {
-	/*height: 100%;*/
+	min-height:100%;
+	position:relative
 }
 
 .inline-item
@@ -22,15 +24,25 @@ body, html
 {
 	font-size:0.8em;
 }
+
+a
+{
+	text-decoration: none;
+	color: white;
+}
 /*************************************************************************/
 
 /***************************Title & Seperaters****************************/
 #title
 {
 	font-size:5em;
-	padding: 0px;
-	margin: 0 0 0 5.5em;
+	padding: 0.15em;
+	margin: 0 0 0 0;
 	opacity: 0;
+	text-align: center;
+	background-image: url('squairy_light.png');
+	color: black;
+	font-family: 'Play', sans-serif;
 }
 
 #title-sub
@@ -42,9 +54,9 @@ body, html
 #vertical-sep
 {
 	border-right: solid white;
-	position: absolute;
+	position: fixed;
 	height: 100%;
-	width: 14em;
+	width: 16%;
 	top:0;
 	bottom:0;
 }
@@ -61,14 +73,24 @@ body, html
 /*****************************Side Menu***********************************/
 #menu
 {
-	width:10em;
-	text-align: right;
-	font-size:1.4em;
-	margin-top:11%;
+	width:16%;
+	font-size:1.6em;
+	padding-top:11%;
+	background-image: url('original.jpeg');
+	height:100%;
+	opacity: 0;
+	font-family: 'Oswald', sans-serif;
 }
+	#menu a
+	{
+		color:black;
+	}
 	#about, #team, #prototype
 	{
 		margin-top:2em;
+		display:block;
+		float:right;
+		margin-right:2em;
 	}
 	#about
 	{
@@ -90,14 +112,18 @@ body, html
 /*****************************Main Content********************************/
 #main
 {
-	display: inline-flex;
 	width: 100%;
+	height: 100%;
+}
+#main > div
+{
+	float:left;
 }
 	#content
 	{
-		width:70%;
+		width:75%;
 		padding: 1em;
-		height:35em;
+		min-height: 100%
 	}
 		#about-tab, #team-tab, #prototype-tab
 		{
@@ -105,8 +131,12 @@ body, html
 		}
 			#about-tab
 			{				
-				text-align: right;
+				text-align: justify;
 			}
+			#about-tab div p{
+				margin-left:14em;
+			}
+
 				#about-tab img
 				{
 					float:left;
@@ -117,11 +147,50 @@ body, html
 			}
 				#prototype-tab iframe
 				{
-					margin-top:1em;
+					margin-top:2em;
 					margin-right: auto;
-					margin-bottom: 1em;
 					margin-left: auto;
 					display:block;
+				}
+				.add-icon-container
+				{
+					margin-top:4em;
+					margin-right:1em;
+					margin-left: 1em;
+				}
+				#components
+				{
+					margin-right:auto;
+					margin-left:auto;
+					width:41.2em;
+					height: 13em;
+				}
+				#components > div
+				{
+					float:left;
+				}
+				.component-icon
+				{
+					width:10em;
+				}
+				.add-icon
+				{
+					width:3em;
+				}
+				.img-with-text 
+				{
+				    text-align: justify;
+				    width: 10em;
+				}
+
+				.img-with-text img 
+				{
+				    display: block;
+				    margin: 0 auto;
+				}
+				.img-with-text p
+				{
+					text-align: center;
 				}
 					#white-cane
 					{
@@ -137,7 +206,7 @@ body, html
 			}
 				#names-sub-menu, #description
 				{
-					margin-top:8%;
+					margin-top:1%;
 				}
 				#names-sub-menu
 				{
@@ -148,7 +217,7 @@ body, html
 				}
 				#team-tab img
 				{
-					width:55%;
+					width:65%;
 					height:auto;
 					float:left;
 				}				
@@ -168,7 +237,7 @@ body, html
 						}
 						#amin
 						{
-							width:9.5em;
+							width:9.8em;
 						}
 						#faiz{
 							width:6.5em;
@@ -182,7 +251,7 @@ body, html
 						}
 						#full-description
 						{
-							margin-top:18%;
+							margin-top:10%;
 							text-align: justify;
 						}
 	#slider

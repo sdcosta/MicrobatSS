@@ -33,29 +33,34 @@
 
 	subMenu.click(function(event) {
 		if (subMenuCompleted){
-		subMenu.css({opacity: 0.3});
-		$(this).css({opacity: 1});
+		subMenu.css({'opacity': 0.3});
+		$(this).css({'opacity': 1});
 		$.ajax({
 	        type:  'post',
 	        cache:  false ,
 	        url:  'Controller.php',
 	        data:  {action: this.id},
 	        success: function(response) {
-	        	$("#description").html(response);			        	
+	        	$('#description').fadeOut(200, function(){
+	        		$('#description').html(response);
+	        		$('#description').show('drop', {direction: "up"}, 500);
+
+	        	});
+	        	
 	        } 
 
 	      });
 		}
 	});
 </script>
-<h2>Meet the Team</h2>
+<h1>Meet the Team</h1>
 <div id="names-sub-menu">
-	<div id="sho">Shouvik D'Costa</div>
-	<div id="suk">Sukhwinder Lall</div>
-	<div id="amin">Amin Ghafelehbashi</div>
-	<div id="faiz">Faizan Haque</div>
-	<div id="tom">Tom Terlecki</div>
-	<div id="char">Charles D'Souza</div>
+	<div id="sho"><a href="javascript:;">Shouvik D'Costa</a></div>
+	<div id="suk"><a href="javascript:;">Sukhwinder Lall</a></div>
+	<div id="amin"><a href="javascript:;">Amin Ghafelehbashi</a></div>
+	<div id="faiz"><a href="javascript:;">Faizan Haque</a></div>
+	<div id="tom"><a href="javascript:;">Tom Terlecki</a></div>
+	<div id="char"><a href="javascript:;">Charles D'Souza</a></div>
 </div>
 <div id="description">
 	<img id="team-pic" src="CSS/team.png"/>
